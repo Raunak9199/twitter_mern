@@ -156,7 +156,7 @@ export const login = async (req, res, next) => {
 };
 
 export const logout = async (req, res) => {
-  /*  await User.findByIdAndUpdate(
+  await User.findByIdAndUpdate(
     req.user._id,
     {
       $set: { refreshToken: 1 }, // this removes the field from document ( 1 is used to unset a value in mongo DB),
@@ -164,7 +164,7 @@ export const logout = async (req, res) => {
     {
       new: true,
     }
-  ); */
+  );
   const options = {
     httpOnly: true,
     secure: true,
@@ -175,6 +175,20 @@ export const logout = async (req, res) => {
     .clearCookie("accessToken", options)
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, {}, "User logged out successfully."));
+};
+
+export const getMe = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id).select(
+      "-password -refreshToken"
+    );
+    if (!user) {
+      throw new ApiError(404, "User not found");
+    }
+    return res.status(200).json(new ApiResponse(200, user));
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
 };
 
 // Generate access & refresh tokens
