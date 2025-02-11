@@ -7,7 +7,7 @@ This API provides user authentication functionalities, including user registrati
 ## Base URL
 
 ```
-http://base-api-url.com/api/users
+http://base-api-url.com/api/v1/users
 ```
 
 ## Endpoints
