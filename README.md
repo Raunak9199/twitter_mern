@@ -7,7 +7,7 @@ This API provides user authentication functionalities, including user registrati
 ## Base URL
 
 ```
-http://base-api-url.com/api/v1/users
+http://base-api-url.com/api/v1/auth
 ```
 
 ## Endpoints
@@ -17,7 +17,7 @@ http://base-api-url.com/api/v1/users
 **Endpoint:**
 
 ```
-POST /users/signup
+POST /auth/signup
 ```
 
 **Request Body:**
@@ -63,7 +63,7 @@ POST /users/signup
 **Endpoint:**
 
 ```
-POST /users/login
+POST /auth/login
 ```
 
 **Request Body:**
@@ -111,7 +111,7 @@ POST /users/login
 **Endpoint:**
 
 ```
-POST /users/profile
+POST /auth/profile
 ```
 
 **Headers:**
@@ -152,7 +152,7 @@ Authorization: Bearer <JWT_ACCESS_TOKEN>
 **Endpoint:**
 
 ```
-POST /users/logout
+POST /auth/logout
 ```
 
 **Headers:**
