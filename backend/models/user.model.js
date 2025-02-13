@@ -53,6 +53,13 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
+    likedPosts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+        default: [],
+      },
+    ],
     refreshToken: {
       type: String,
     },
