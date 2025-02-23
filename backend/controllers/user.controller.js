@@ -7,7 +7,9 @@ import { v2 as cloudinary } from "cloudinary";
 export const getUserProfile = async (req, res) => {
   const { userName } = req.params;
   try {
-    const user = await User.findOne(userName).select("-password -refreshToken");
+    const user = await User.findOne({ userName }).select(
+      "-password -refreshToken"
+    );
     if (!user) {
       return res
         .status(404)
